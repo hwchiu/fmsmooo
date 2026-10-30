@@ -1,0 +1,32 @@
+{
+  "name": "factory-deployment-readiness",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node server/index.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/test.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "html-react-parser": "5.2.7"
+  },
+  "devDependencies": {
+    "vite": "6.4.1",
+    "typescript": "5.9.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@babel/parser": "7.28.5",
+    "@babel/traverse": "7.28.5",
+    "@babel/generator": "7.28.5",
+    "@babel/types": "7.28.5",
+    "prettier": "3.6.2",
+    "node": "22.21.1"
+  }
+}

@@ -1,0 +1,638 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FIELDWORK synthetic snapshot — observed schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "synthetic": {
+          "type": "boolean"
+        },
+        "snapshot_at": {
+          "type": "string"
+        },
+        "status_stale_after_hours": {
+          "type": "integer"
+        },
+        "cross_factory_dependencies": {
+          "type": "boolean"
+        },
+        "rule_version": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "synthetic",
+        "snapshot_at",
+        "status_stale_after_hours",
+        "cross_factory_dependencies",
+        "rule_version",
+        "note"
+      ]
+    },
+    "catalog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "build_stage": {
+            "type": "integer"
+          },
+          "build_stage_name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "criticality": {
+            "type": "object",
+            "properties": {
+              "business": {
+                "type": "string"
+              },
+              "technical": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "business",
+              "technical"
+            ]
+          },
+          "department_id": {
+            "type": "string"
+          },
+          "department_name": {
+            "type": "string"
+          },
+          "deployment_type": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "layer": {
+            "type": "string"
+          },
+          "original_product_name": {
+            "type": "string"
+          },
+          "owner_team": {
+            "type": "string"
+          },
+          "product_id": {
+            "type": "string"
+          },
+          "product_name": {
+            "type": "string"
+          },
+          "shared_service": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "build_stage",
+          "build_stage_name",
+          "category",
+          "criticality",
+          "department_id",
+          "department_name",
+          "deployment_type",
+          "domain",
+          "layer",
+          "original_product_name",
+          "owner_team",
+          "product_id",
+          "product_name",
+          "shared_service"
+        ]
+      }
+    },
+    "factories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "factory_id": {
+            "type": "string"
+          },
+          "factory_name": {
+            "type": "string"
+          },
+          "snapshot_at": {
+            "type": "string"
+          },
+          "synthetic": {
+            "type": "boolean"
+          },
+          "timezone": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "city",
+          "description",
+          "factory_id",
+          "factory_name",
+          "snapshot_at",
+          "synthetic",
+          "timezone"
+        ]
+      }
+    },
+    "instances": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "build_stage": {
+            "type": "integer"
+          },
+          "build_stage_name": {
+            "type": "string"
+          },
+          "department_id": {
+            "type": "string"
+          },
+          "department_name": {
+            "type": "string"
+          },
+          "environment": {
+            "type": "string"
+          },
+          "factory_id": {
+            "type": "string"
+          },
+          "instance_id": {
+            "type": "string"
+          },
+          "instance_name": {
+            "type": "string"
+          },
+          "milestones": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "array",
+                "items": {}
+              }
+            ]
+          },
+          "observed_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "product_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "status_source": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "build_stage",
+          "build_stage_name",
+          "department_id",
+          "department_name",
+          "environment",
+          "factory_id",
+          "instance_id",
+          "instance_name",
+          "milestones",
+          "observed_at",
+          "product_id",
+          "status",
+          "status_source",
+          "version"
+        ]
+      }
+    },
+    "fault_instance_overrides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "instance_id": {
+            "type": "string"
+          },
+          "milestones": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "array",
+                "items": {}
+              }
+            ]
+          },
+          "observed_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "instance_id",
+          "milestones",
+          "observed_at",
+          "status"
+        ]
+      }
+    },
+    "baseline_attempts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "attempt_id": {
+            "type": "string"
+          },
+          "factory_id": {
+            "type": "string"
+          },
+          "instance_id": {
+            "type": "string"
+          },
+          "observed_at": {
+            "type": "string"
+          },
+          "phase": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "target_version": {
+            "type": "string"
+          },
+          "waiting_for": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "required": [
+          "attempt_id",
+          "factory_id",
+          "instance_id",
+          "observed_at",
+          "phase",
+          "state",
+          "target_version",
+          "waiting_for"
+        ]
+      }
+    },
+    "topology": {
+      "type": "object",
+      "properties": {
+        "synthetic": {
+          "type": "boolean"
+        },
+        "version": {
+          "type": "string"
+        },
+        "ratio_basis": {
+          "type": "string"
+        },
+        "backbone_count": {
+          "type": "integer"
+        },
+        "parallel_cross_count": {
+          "type": "integer"
+        },
+        "backbone_ratio": {
+          "type": "number"
+        },
+        "operational_count": {
+          "type": "integer"
+        },
+        "build_stages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "stage": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "name",
+              "stage"
+            ]
+          }
+        }
+      },
+      "required": [
+        "synthetic",
+        "version",
+        "ratio_basis",
+        "backbone_count",
+        "parallel_cross_count",
+        "backbone_ratio",
+        "operational_count",
+        "build_stages"
+      ]
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dependency_scope": {
+            "type": "string"
+          },
+          "edge_id": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "factory_id": {
+            "type": "string"
+          },
+          "mandatory": {
+            "type": "boolean"
+          },
+          "origin": {
+            "type": "string"
+          },
+          "rationale": {
+            "type": "string"
+          },
+          "relationship_type": {
+            "type": "string"
+          },
+          "scenario_id": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "temporal_constraint": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "predecessor_state": {
+                    "type": "string"
+                  },
+                  "required_before": {
+                    "type": "string"
+                  },
+                  "required_version": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "predecessor_state",
+                  "required_before",
+                  "required_version"
+                ]
+              },
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "predecessor_state": {
+                    "type": "string"
+                  },
+                  "required_before": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "predecessor_state",
+                  "required_before"
+                ]
+              }
+            ]
+          },
+          "topology_role": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dependency_scope",
+          "edge_id",
+          "enabled",
+          "factory_id",
+          "mandatory",
+          "origin",
+          "rationale",
+          "relationship_type",
+          "source",
+          "target",
+          "temporal_constraint"
+        ]
+      }
+    },
+    "attempts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "attempt_id": {
+            "type": "string"
+          },
+          "factory_id": {
+            "type": "string"
+          },
+          "instance_id": {
+            "type": "string"
+          },
+          "observed_at": {
+            "type": "string"
+          },
+          "phase": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "target_version": {
+            "type": "string"
+          },
+          "waiting_for": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {}
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "dependency_id": {
+                      "type": "string"
+                    },
+                    "observed_at": {
+                      "type": "string"
+                    },
+                    "prerequisite_instance_id": {
+                      "type": "string"
+                    },
+                    "required_milestone": {
+                      "type": "string"
+                    },
+                    "required_version": {
+                      "type": "string"
+                    },
+                    "wait_started_at": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "dependency_id",
+                    "observed_at",
+                    "prerequisite_instance_id",
+                    "required_milestone",
+                    "required_version",
+                    "wait_started_at"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "attempt_id",
+          "factory_id",
+          "instance_id",
+          "observed_at",
+          "phase",
+          "state",
+          "target_version",
+          "waiting_for"
+        ]
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "member_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "member_names": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "scenario_id": {
+            "type": "string"
+          },
+          "suggested_fix": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "description",
+          "member_ids",
+          "member_names",
+          "scenario_id",
+          "suggested_fix"
+        ]
+      }
+    },
+    "departments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "build_stage": {
+            "type": "integer"
+          },
+          "department_id": {
+            "type": "string"
+          },
+          "department_name": {
+            "type": "string"
+          },
+          "synthetic": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "build_stage",
+          "department_id",
+          "department_name",
+          "synthetic"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "metadata",
+    "catalog",
+    "factories",
+    "instances",
+    "fault_instance_overrides",
+    "baseline_attempts",
+    "topology",
+    "dependencies",
+    "attempts",
+    "scenarios",
+    "departments"
+  ],
+  "description": "依目前合成快照歸納的資料結構；required 表示所有目前樣本均出現，不代表正式 API 契約。"
+}

@@ -1,0 +1,9 @@
+{
+  "runtime": "v22.21.1",
+  "react": "19.2.0",
+  "vite": "6.4.1",
+  "typescript": "5.9.3",
+  "baselineVersion": 37,
+  "staticOutput": "dist",
+  "goBackendImplemented": false
+}

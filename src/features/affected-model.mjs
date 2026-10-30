@@ -1,0 +1,38 @@
+import { components } from './factory-model.mjs';
+export function downstreamImpact(source, gates) {
+  const adjacency = new Map();
+  for (const edge of gates) {
+    if (!adjacency.has(edge.source)) adjacency.set(edge.source, []);
+    adjacency.get(edge.source).push(edge.target);
+  }
+  const distance = new Map([[source, 0]]),
+    parent = new Map(),
+    queue = [source];
+  for (let cursor = 0; cursor < queue.length; cursor++) {
+    const id = queue[cursor];
+    for (const target of adjacency.get(id) || []) if (!distance.has(target)) {
+      distance.set(target, distance.get(id) + 1);
+      parent.set(target, id);
+      queue.push(target);
+    }
+  }
+  const cyclic = new Set(components(new Set(gates.flatMap(e => [e.source, e.target])), gates).flat());
+  const results = new Map();
+  for (const [id, depth] of distance) {
+    if (id === source) continue;
+    const path = [id];
+    let current = id;
+    while (current !== source) {
+      current = parent.get(current);
+      path.push(current);
+    }
+    results.set(id, {
+      id,
+      depth,
+      path: path.reverse(),
+      cyclic: cyclic.has(id),
+      direct: depth === 1
+    });
+  }
+  return results;
+}
